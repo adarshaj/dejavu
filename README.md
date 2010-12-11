@@ -1,13 +1,18 @@
-facehash -- off the internet, distributed facial recognition
-============================================================
+dejavu -- distributed image recognition
+=======================================
 
-facehash uses the [TeleHash][1] [DHT][2] to ditribute pictures and
-match them against each other. It is ideal for use by a search and
-rescue team to identify victims in a post-disaster situation.
+dejavu uses the [TeleHash][1] [DHT][2] to ditribute pictures and
+match them against each other.
+
+One use case would be for a search and rescue team to identify victims
+in a post-disaster situation. Given each member of the team has a part
+of the database of faces such that the entire network contains the whole
+database, a face can be effeciently recognized by distributing a
+picture among the peers.
 
 daemon
 ------
-The main TeleHash and HTTP daemon which broadcasts and listens to
+The TeleHash and HTTP daemon which broadcasts and listens to
 app-specific communication.
 
 Use TeleHash to broadcast signals and commands, HTTP to serve
@@ -18,12 +23,16 @@ telehash
 `photo` telex -- always contains url(http), and hash of the image,
 optionally contains a tag (an object identifying the photo)
 
-**signals and commands** that can be attached to a photo telex:
+**signals and commands** that can be attached a photo telex to:
 
-  * `.store` -- store a reference image, an original
-  * `+match` -- a photo of a person to be ID'ed
-  * `.ack` -- acknowledgement for staging of a photo for recognition
-              or after storing it retry if not received within a timeout
+ * `.store` -- store a reference image, an original
+ * `+match` -- a photo of a person to be ID'ed
+ * `.ack` -- acknowledgement for staging of a photo for recognition
+   or after storing it retry if not received within a timeout
+
+when the daemon is started with the `--seed` option, it skips bootstrap. It's
+world-facing IP has to be manually determined and distributed to the new coming
+peers.
 
 web interface
 -------------
@@ -39,12 +48,12 @@ files
 -----
 
     bin/
-      `--facehash        # executable to start the daemons
+      `--dejavu        # executable to start the daemons
     lib/
-      `--ext/            # external libraries, in 'paths'
-      `--facehash/       # our libraries
-      `--facehash.js     # setup
-    test/                # tests
+      `--ext/          # external libraries, in 'paths'
+      `--dejavu/       # our libraries
+      `--dejavu.js     # setup
+    test/              # tests
 
 [1]: http://telehash.org/
 [2]: http://en.wikipedia.org/wiki/Distributed_hash_table

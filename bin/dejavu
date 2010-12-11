@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*
- * the facehash binary, runs both the TeleHash
+ * the dejavu binary, runs both the TeleHash
  * and HTTP servers
  *
  */
@@ -13,6 +13,6 @@ var lib_path = path.normalize(path.join(__dirname, '..', 'lib')),
 require.paths.unshift(lib_path);
 require.paths.unshift(ext_path);
 
-var facehash = require("facehash");
+var dejavu = require("dejavu");
 
 
