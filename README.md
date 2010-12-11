@@ -47,4 +47,4 @@ files
     test/                # tests
 
 [1]: http://telehash.org/
-[2]: http://en.wikipedia.org/Distributed_hash_table
+[2]: http://en.wikipedia.org/wiki/Distributed_hash_table
