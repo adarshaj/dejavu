@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+/*
+ * the facehash binary, runs both the TeleHash
+ * and HTTP servers
+ *
+ */
+
+var path = require('path');
+var lib_path = path.normalize(path.join(__dirname, '..', 'lib')),
+    ext_path = path.join(lib_path, 'ext');
+
+require.paths.unshift(lib_path);
+require.paths.unshift(ext_path);
+
+var facehash = require("facehash");
+
+
