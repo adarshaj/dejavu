@@ -1,0 +1,29 @@
+html {
+  font-family: tahoma, serif;
+}
+
+body {
+  margin: 32px;
+  width: 960px;
+}
+h1 {
+  border-bottom: #555 1px dashed;
+}
+
+h1, h2 {
+  color: #333;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 105%;
+}
+
+p {
+  margin-top:0;
+  margin-left: 10px
+}
+
+a {
+  color: #666
+}

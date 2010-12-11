@@ -1,0 +1,180 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>documentation</title> 
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" /> 
+</head> 
+<body> 
+  <div id="container"> 
+    <div id="toc"><h2>Table Of Contents</h2><ul><li><a href="#telehash_Module">telehash Module</a></li><li><a href="#some_generally_usefuls.">Some generally usefuls.</a><ul><li><a href="#keys">keys(o)</a></li><li><a href="#time">time()</a></li><li><a href="#rand">rand(n)</a></li><li><a href="#isArray">isArray(o)</a></li><li><a href="#isString">isString(o)</a></li><li><a href="#isFunction">isFunction(o)</a></li></ul></li><li><a href="#telex">Telex</a><ul><li><a href="#telex">Telex(arg)</a></li><li><a href="#telex.hasSignals">Telex.hasSignals()</a></li><li><a href="#telex.getCommands">Telex.getCommands()</a></li><li><a href="#telex.getSignals">Telex.getSignals()</a></li></ul></li><li><a href="#switch">Switch</a><ul><li><a href="#switch.start">Switch.start()</a></li><li><a href="#switch.stop">Switch.stop()</a></li><li><a href="#switch.startBootstrap">Switch.startBootstrap()</a></li><li><a href="#switch.completeBootstrap">Switch.completeBootstrap(remoteipp, telex)</a></li><li><a href="#switch.recv">Switch.recv(msgstr, rinfo)</a></li><li><a href="#switch.onCommand_see">Switch.onCommand_see(remoteipp, telex, line)</a></li><li><a href="#switch.onCommand_tap">Switch.onCommand_tap(remoteipp, telex, line)</a></li><li><a href="#switch.send">Switch.send(telex)</a></li><li><a href="#switch.getline">Switch.getline(endpoint)</a></li><li><a href="#switch.checkline">Switch.checkline(line, t, br)</a></li><li><a href="#switch.scanlines">Switch.scanlines()</a></li><li><a href="#switch.near_to">Switch.near_to(end, ipp)</a></li><li><a href="#master">master</a></li><li><a href="#tap">tap</a></li><li><a href="#nBUCKETS">NBUCKETS</a></li><li><a href="#server">server</a></li></ul></li><li><a href="#hash">Hash</a><ul><li><a href="#hash">Hash(value)</a></li><li><a href="#byte2hex">byte2hex(d)</a></li><li><a href="#hash.far">Hash.far()</a></li><li><a href="#hash.or">Hash.or(h)</a></li><li><a href="#hash.cmp">Hash.cmp(h)</a></li><li><a href="#hash.distanceTo">Hash.distanceTo(h)</a></li><li><a href="#hash.toString">Hash.toString()</a></li><li><a href="#hash.equals">Hash.equals(h)</a></li></ul></li></ul><hr /></div>
+<h1>telehash Module</h1>
+
+<h1>Some generally usefuls.</h1>
+
+<h2 id="keys">keys(o)</h2>
+
+<p>Enumerate data fields of an object.
+Function objects are skipped.</p>
+
+<h2 id="time">time()</h2>
+
+<p>See time(2).</p>
+
+<h2 id="rand">rand(n)</h2>
+
+<p>Return a random integer 1..n inclusive.</p>
+
+<h2 id="isArray">isArray(o)</h2>
+
+<p>return ( Math.floor ( Math.random ( time() ) * n + 1 ) );
+Test if an Object is an Array.</p>
+
+<h2 id="isString">isString(o)</h2>
+
+<p>Test if an Object is a String.</p>
+
+<h2 id="isFunction">isFunction(o)</h2>
+
+<p>Test if an Object is a Function.</p>
+
+<h1>Telex</h1>
+
+<h2 id="telex">Telex(arg)</h2>
+
+<p>Create a new Telex.
+If the first argument is a string, it is used as the <em>to endpoint
+for the new Telex. Otherwise all key-value pairs in the argument
+are copied into the new Telex.
+Example:
+ new Telex("somehost.com:41234")
+ new Telex({</em>to: "somehost.com:41234", _ring: 8980})</p>
+
+<h2 id="telex.hasSignals">Telex.hasSignals()</h2>
+
+<p>Test if a telex has signals. Signals start with a '+'.</p>
+
+<h2 id="telex.getCommands">Telex.getCommands()</h2>
+
+<p>Get all the commands in this telex.
+Returns an object of command names mapped to command parameter,
+with leading '.' stripped off of command name.</p>
+
+<h2 id="telex.getSignals">Telex.getSignals()</h2>
+
+<p>Get all the signals in this telex.
+Returns an object of signal names mapped to command parameter,
+with leading '+' stripped off of signal name.</p>
+
+<h1>Switch</h1>
+
+<h2 id="switch.start">Switch.start()</h2>
+
+<p>Start the switch.
+The switch will start listening on its bind port
+and start the bootstrap process.</p>
+
+<h2 id="switch.stop">Switch.stop()</h2>
+
+<p>Stop the switch.</p>
+
+<h2 id="switch.startBootstrap">Switch.startBootstrap()</h2>
+
+<p>Start the bootstrap process by sending a telex to the
+bootstrap switch.</p>
+
+<h2 id="switch.completeBootstrap">Switch.completeBootstrap(remoteipp, telex)</h2>
+
+<p>Complete the bootstrap by processing the response from
+the bootstrap switch.</p>
+
+<h2 id="switch.recv">Switch.recv(msgstr, rinfo)</h2>
+
+<p>Dispatch incoming raw messages.
+This method is called automatically on incoming dgram message.</p>
+
+<h2 id="switch.onCommand_see">Switch.onCommand_see(remoteipp, telex, line)</h2>
+
+<p>Handle the .see TeleHash command.</p>
+
+<h2 id="switch.onCommand_tap">Switch.onCommand_tap(remoteipp, telex, line)</h2>
+
+<p>Handle the .tap TeleHash command.</p>
+
+<h2 id="switch.send">Switch.send(telex)</h2>
+
+<p>Send a telex.</p>
+
+<h2 id="switch.getline">Switch.getline(endpoint)</h2>
+
+<p>Get the line for a host:port endpoint,
+creating a new line if necessary.</p>
+
+<h2 id="switch.checkline">Switch.checkline(line, t, br)</h2>
+
+<p>Check a line's status.
+True if open, false if ringing.</p>
+
+<h2 id="switch.scanlines">Switch.scanlines()</h2>
+
+<p>line.line = line.ringin * line.ringout;
+Update status of all lines, removing stale ones.</p>
+
+<h2 id="switch.near_to">Switch.near_to(end, ipp)</h2>
+
+<p>generate a .see for an +end, using a switch as a hint</p>
+
+<h2 id="master">master</h2>
+
+<p>list of all lines, keyed by hash</p>
+
+<h2 id="tap">tap</h2>
+
+<p>tap options and rules</p>
+
+<h2 id="nBUCKETS">NBUCKETS</h2>
+
+<p> = 160 (SHA1)</p>
+
+<h2 id="server">server</h2>
+
+<p>instance of udp4 server (doc/api/dgram.html)</p>
+
+<h1>Hash</h1>
+
+<h2 id="hash">Hash(value)</h2>
+
+<p>Hash objects represent a message digest of string content,
+with methods useful to DHT calculations.
+@constructor</p>
+
+<h2 id="byte2hex">byte2hex(d)</h2>
+
+<p>Format a byte as a two digit hex string.</p>
+
+<h2 id="hash.far">Hash.far()</h2>
+
+<p>Get the hash as geometrically "far" as possible from this one.
+That would be the logical inverse, every bit flipped.</p>
+
+<h2 id="hash.or">Hash.or(h)</h2>
+
+<p>Logical bitwise 'or' this hash with another.</p>
+
+<h2 id="hash.cmp">Hash.cmp(h)</h2>
+
+<p>Comparator for hash objects.</p>
+
+<h2 id="hash.distanceTo">Hash.distanceTo(h)</h2>
+
+<p>XOR distance between two sha1 hex hashes, 159 is furthest bit, 0 is closest bit, -1 is same hash</p>
+
+<h2 id="hash.toString">Hash.toString()</h2>
+
+<p>Represent the hash as a hexadecimal string.</p>
+
+<h2 id="hash.equals">Hash.equals(h)</h2>
+
+<p>Test if two hashes are equal.</p>
+  </div>
+</body> 
+</html>
